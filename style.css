@@ -1,0 +1,759 @@
+body {
+    margin: 0;
+    width: 100%;
+    height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    position: relative;
+}
+
+.div-87652948 {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(100px);
+}
+
+.containerMostrar {
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #ccc;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    font-weight: bold;
+}
+
+.containerMostrar legend {
+    user-select: none;
+}
+
+.containerMostrar .containerSenha {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+}
+
+.containerMostrar .containerSenha svg {
+    padding: 5px 5px 5px 5px;
+    border-top: 2px solid #ccc;
+    border-bottom: 2px solid #ccc;
+    border-right: 2px solid #ccc;
+    box-shadow: 0 0 10px #ccc;
+    border-radius: 0px 10px 10px 0px;
+    background-color: #fff;
+}
+
+.containerMostrar .containerSenha svg:hover {
+    cursor: pointer;
+}
+
+.containerMostrar .containerSenha .inputSenha {
+    padding: 10px;
+    border-top: 2px solid #ccc;
+    border-bottom: 2px solid #ccc;
+    border-left: 2px solid #ccc;
+    box-shadow: 0 0 10px #ccc;
+    border-radius: 10px 0px 0px 10px;
+    outline: none;
+    font-weight: bold;
+    background-color: #fff;
+}
+
+.senhaIncorreta {
+    border: 2px solid red;
+}
+
+.mensagemSenhaIncorreta {
+    color: red;
+    font-weight: bold;
+    font-size: 12px;
+    margin: 0;
+}
+
+.containerMostrar .btnMostrar {
+    padding: 10px 30px;
+    font-weight: bold;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #ccc;
+    background-color: #fff;
+    color: #000;
+    cursor: pointer;
+    user-select: none;
+}
+
+.containerMostrar button:hover {
+    scale: 1.005;
+    transition: .3s;
+}
+
+.nav {
+    width: 100%;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 5px #ccc;
+    border-bottom: 2px solid #ccc;
+    position: relative;
+    font-size: 25px;
+}
+
+.search {
+    /* Com SVG */
+    /* display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    align-items: center; */
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #ccc;
+    background-color: #fff;
+    position: absolute;
+    left: 50px;
+    top: 50px;
+    border: 2px solid #ccc;
+}
+
+.search input {
+    padding: 15px 30px;
+    border: none;
+    font-weight: bold;
+    outline: none;
+    border-radius: 10px;
+    text-align: start;
+    justify-content: center;
+}
+
+.search svg {
+    padding: 20px 15px 10px 25px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.itemList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 150px;
+    overflow-y: scroll;
+}
+
+.itemList li {
+    padding: 10px;
+    display: none;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 10px;
+    margin: 5px;
+    width: 210px;
+}
+
+.itemList li:hover {
+    transition: .5s;
+    background-color: #ccc;
+}
+
+.confirmar {
+    border-radius: 10px;
+}
+
+.confirmar .btnConfirmar {
+    padding: 15px 30px ;
+    border-radius: 10px;
+    border: 2px solid #ccc;
+    box-shadow: 0 0 10px #ccc;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: #fff;
+}
+
+.confirmar .btnConfirmar:hover {
+    transition: .5s;
+    scale: 1.01;
+}
+
+.main {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.divMainAdicionar {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: start;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #ccc;
+    border: 2px solid #ccc;
+    width: 500px;
+    padding: 20px;
+    font-weight: bold;
+    gap: 100px;
+    margin-bottom: 50px;
+    position: relative;
+}
+
+.divMainAdicionar .search3 {
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #ccc;
+    font-weight: bold;
+    position: absolute;
+    top: 100px;
+    background-color: #fff;
+}
+
+.divMainAdicionar .searchInput3 {
+    border: none;
+    background-color: #fff;
+    font-weight: bold;
+    padding: 15px 30px;
+    border-radius: 10px;
+    outline: none;
+    width: 240px;
+}
+
+.itemList2 {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 150px;
+    overflow-y: scroll;
+}
+
+.itemList2 li {
+    padding: 10px;
+    display: none;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 10px;
+    margin: 5px;
+    width: 210px;
+}
+
+.itemList2 li:hover {
+    transition: .5s;
+    background-color: #ccc;
+}
+
+.h2Adicionar {
+    text-align: center;
+}
+
+.divMainAdicionar .divAdicionar {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.divMainAdicionar .divAdicionar textarea {
+    resize: none;
+    box-shadow: 0 0 10px #ccc;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    font-weight: bold;
+    outline: none;
+    padding: 10px;
+}
+
+.disponibilidade {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.datas {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.dataPedido, .previsaoDeChegada {
+    width: 240px;
+}
+
+
+#searchInput2 {
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    border: 2px solid #ccc;
+    box-shadow: 0 0 10px #ccc;
+    left: 0px;
+    top: 500px;
+}
+
+#itemList {
+    display: none;
+    width: 900px;
+    min-height: 100px;
+    list-style: none;
+    border-radius: 10px;
+    border: 2px solid #ccc;
+    box-shadow: 0 0 10px #ccc;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    overflow-y: auto;
+}
+
+
+#itemList li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    font-weight: bold;
+}
+
+#itemList p {
+    font-size: 12px;
+    gap: 20px;
+}
+
+#itemList p {
+    font-weight: bold;
+}
+
+.containerMain {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    gap: 20px;
+}
+
+.disponivel {
+    color: green;
+}
+
+.indisponivel {
+    color: red;
+}
+
+.svgSalvar,
+.svgEditar, 
+.svgApagar {
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.svgSalvar:hover, 
+.svgEditar:hover, 
+.svgApagar:hover  {
+    scale: 0.950;
+    background-color: #ccc;
+    transition: .5s;
+}
+
+.inputNovoNome {
+    padding: 10px;
+    border: 2px solid #ccc;
+    box-shadow: 0 0 10px #ccc;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.inputNovoNome:focus {
+    border: 2px solid #000;
+}
+
+.div-08945 {
+    position: relative;
+}
+
+.footer {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.footer .divFooter {
+    margin-bottom: 5px;
+}
+
+.pFooter {
+    color: #000;
+    font-weight: 1000;
+    font-size: 13px;
+    text-align: center;
+    user-select: none;
+}
+
+.pFooter a {
+    text-decoration: none;
+    color: #000;
+}
+
+.pFooter a:hover {
+    color: #ccc;
+    transition: .3s;
+}
+
+.modal {
+    display: none;
+    /* Esconde o modal inicialmente */
+    position: fixed;
+    z-index: 1;
+    /* Coloca o modal sobre outros elementos */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    /* Fundo semitransparente */
+    justify-content: center;
+    align-items: center;
+}
+
+/* Estilo para o conteúdo do modal */
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    width: 400px;
+    max-width: 90%;
+    /* Para telas menores */
+    text-align: center;
+}
+
+/* Estilo para o botão de fechar */
+.close-modal, 
+.btnConfirmarModal {
+    background-color: #000;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 20px;
+    width: 100px;
+}
+
+.close-modal:hover, 
+.btnConfirmarModal:hover {
+    background-color: rgba(0, 0, 0, 0.6);
+    transition: .3s;
+}
+
+.spanApagar, 
+.spanAdicionar {
+    font-weight: bold;
+}
+
+.modalErro {
+    display: none;
+    /* Esconde o modal inicialmente */
+    position: fixed;
+    z-index: 1;
+    /* Coloca o modal sobre outros elementos */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    /* Fundo semitransparente */
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-contentErro {
+    background-color: #fff;
+    font-weight: bold;
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px solid red;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    width: 400px;
+    max-width: 90%;
+    /* Para telas menores */
+    text-align: center;
+}
+
+.btnsModal {
+    display: flex;
+    justify-content: end;
+    gap: 10px;
+}
+
+.btnConfirmarModalErro {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.btnConfirmarModalErro:hover {
+    background-color: #990000;
+    transition: .3s;
+}
+
+.spanModalErro {
+    color: red;
+    font-weight: bold;
+}
+
+/* Para telas menores que 1024px */
+@media (max-width: 1024px) {
+    .nav {
+        padding: 20px;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .search {
+        width: 250px;
+        position: static;
+        margin: 0 auto;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        gap: 5px;
+    }
+
+    .search input {
+        width: calc(100% - 40px);
+        margin-left: 0;
+        padding: 10px;
+    }
+
+    .search svg {
+        padding: 10px;
+        margin-right: 0;
+    }
+
+    .containerMain {
+        gap: 70px;
+        position: relative;
+    }
+
+    .itemList {
+        display: flex;
+        flex-direction: column;
+        overflow-x: hidden;
+        max-width: 280px;
+    }
+
+    .itemList li {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    #searchInput2 {
+        width: 250px;
+        top: 110px;
+        left: 7px;
+    }
+
+    #itemList {
+        width: 730px;
+        padding: 10px;
+    }
+
+    #itemList li {
+        width: 700px;
+        justify-content: space-between;
+        align-items: center;
+        font-weight: bold;
+        font-size: 13px;
+        gap: 5px;
+    }
+}
+
+/* Para telas menores que 768px (tablets e smartphones) */
+@media (max-width: 768px) {
+    .nav {
+        padding: 20px;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .nav h1 {
+        font-size: 20px;
+    }
+
+    .search {
+        width: 200px;
+        padding: 5px;
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+    }
+
+    .search input {
+        width: calc(100% - 30px);
+        padding: 8px;
+        position: relative;
+    }
+
+    .search svg {
+        padding: 8px;
+        margin-right: 0;
+        position: absolute;
+        right: 225px;
+        top: 92px;
+        width: 20px;
+        height: 20px;
+        user-select: none;
+    }
+
+    .itemList {
+        overflow-x: hidden;
+        max-width: 200px;
+    }
+
+    .itemList li {
+        font-size: 12px;
+        padding: 6px;
+    }
+
+    .containerMain {
+        gap: 50px;
+        position: relative;
+    }
+
+    .divMainAdicionar {
+        max-width: 400px;
+    }
+
+    #searchInput2 {
+        max-width: 200px;
+        padding: 15px;
+        top: 80px;
+        left: -2px;
+    }
+
+    #itemList {
+        max-width: 400px;
+    }
+
+    #itemList li {
+        font-weight: bold;
+        font-size: 15px;
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        gap: 0px;
+    }
+}
+
+/* Para telas menores que 480px (smartphones em retrato) */
+@media (max-width: 480px) {
+    .nav {
+        width: 100%;
+        padding: 20px;
+        height: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .search {
+        width: 200px;
+        padding: 5px;
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+    }
+
+    .search input {
+        width: calc(100% - 30px);
+        padding: 8px;
+        position: relative;
+    }
+
+    .search svg {
+        padding: 8px;
+        margin-right: 0;
+        position: absolute;
+        right: 65px;
+        width: 20px;
+        height: 20px;
+        user-select: none;
+    }
+
+    .containerMain {
+        position: relative;
+    }
+
+    .itemList {
+        max-width: 250px;
+        overflow-x: hidden;
+    }
+
+    .itemList li {
+        font-size: 12px;
+        padding: 6px;
+    }
+
+    .searchInput3 {
+        max-width: 200px;
+    }
+
+    #searchInput2 {
+        width: calc(100% - 30px);
+        padding: 15px;
+        top: 80px;
+        left: -2px;
+    }
+
+    #itemList {
+        width: 250px;
+    }
+
+    #itemList li {
+       gap: 8px;
+       font-size: 15px;
+       font-weight: bold;
+    }
+
+    .divMainAdicionar {
+        max-width: 250px;
+        margin: 0;
+    }
+
+    .footer .divFooter {
+    border-top: 2px solid #ccc;
+    margin-top: 200px;
+}
+}
