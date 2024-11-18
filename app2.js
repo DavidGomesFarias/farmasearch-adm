@@ -145,6 +145,6 @@ app.delete('/dados/:cidade/:id', (req, res) => {
 
 
 
-app.listen(3001, () => {
+app.listen(80, () => {
   console.log('Servidor rodando na porta 3001');
 });
