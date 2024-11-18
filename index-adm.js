@@ -7,7 +7,7 @@ localStorage.clear()
 
 function updateItemList(cidade) {
   const cidadeFormatada = cidade.replace(/\s+/g, '');
-  fetch(`https://farmasearch.onrender.com/dados/${cidadeFormatada}`) // Ajuste a URL conforme necessário
+  fetch(`https://farmasearch-adm.onrender.com/dados/${cidadeFormatada}`) // Ajuste a URL conforme necessário
     .then(response => {
       if (!response.ok) {
         throw new Error(`Erro na requisição: ${response.statusText}`);
@@ -214,7 +214,7 @@ function updateItemList(cidade) {
               nova_data_previsao: novaDataPrevisao
             }
 
-            fetch(`https://farmasearch.onrender.com/dados/${itemId}`, {
+            fetch(`https://farmasearch-adm.onrender.com/dados/${itemId}`, {
               method: 'PUT',
               headers: {
                 'Content-Type': 'application/json',
@@ -316,7 +316,7 @@ function updateItemList(cidade) {
 
         function apagarRemedio() {
             const cidadeFormatada = cidade3.replace(/\s+/g, '');
-            fetch(`https://farmasearch.onrender.com/dados/${cidadeFormatada}/${itemDeleteId}`, {
+            fetch(`https://farmasearch-adm.onrender.com/dados/${cidadeFormatada}/${itemDeleteId}`, {
               method: 'DELETE',
               headers: {
                 'Content-Type': 'application/json',
@@ -527,7 +527,7 @@ document.getElementById('searchInput').addEventListener('keyup', function() {
            data_previsao: dataPrevisao
          };
 
-         fetch('https://farmasearch.onrender.com/dados', {
+         fetch('https://farmasearch-adm.onrender.com/dados', {
                method: 'POST',
                headers: {
                  'Content-Type': 'application/json',
@@ -679,7 +679,7 @@ document.querySelector('.btnConfirmar').addEventListener('click', (event) => {
         document.getElementById('myModal').style.display = 'flex';
   };
 
-  fetch('https://farmasearch.onrender.com/dados', {
+  fetch('https://farmasearch-adm.onrender.com/dados', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
