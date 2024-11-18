@@ -285,10 +285,14 @@ function updateItemList(cidade) {
                   openModal();
                   document.querySelector('.close-modal').style.display = 'none';
                   document.querySelector('.btnConfirmarModal').innerText = 'Fechar';
-                  document.querySelector('.btnConfirmarModal').addEventListener('click', closeModal);
-                  let cidade3 = document.querySelector('#searchInput').value.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, '');
+                  document.querySelector('.btnConfirmarModal').addEventListener('click', () => {
+		   let cidade3 = document.querySelector('#searchInput').value.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, '');
+		   closeModal()
+		   updateItemList(cidade3)  
+		  );			
+                  
 
-                  updateItemList(cidade3)
+                  
                   // alert('Remédio editado com sucesso!')
               })
               .catch(error => {
