@@ -488,7 +488,7 @@ document.getElementById('searchInput').addEventListener('keyup', function() {
           <button type="button" class="btnConfirmar">Confirmar</button>
         </div>
       </form>
-        <h2>${textNormal}</h2>
+        <h2 id="h2DivMainAdicionar">${textNormal}</h2>
         <input type="text" id="searchInput2" placeholder="Buscar Remédio">
         <ul id="itemList" style="display: flex;">
         
@@ -543,6 +543,10 @@ document.getElementById('searchInput').addEventListener('keyup', function() {
                .then(result => {
                  console.log('Dados enviados com sucesso:', result);
                  updateItemList(cidade2)
+		 const valorInput3 = document.querySelector('.searchInput3').value
+                 const mostrar = document.querySelector('#h2DivMainAdicionar')
+                 mostrar.innerText = valorInput3
+                 document.querySelector('#searchInput').value = valorInput3
                  document.querySelector('.textAreaNomeRemedio').value = '';
                  document.querySelector('.dataPedido2').value = '';
                  document.querySelector('.previsaoDeChegada2').value = '';
