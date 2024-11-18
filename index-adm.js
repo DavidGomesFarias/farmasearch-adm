@@ -5,8 +5,24 @@ if(localStorage.getItem('token') == null) {
 
 localStorage.clear()
 
+let requisicaoEmAndamento = false;
+
 function updateItemList(cidade) {
   const cidadeFormatada = cidade.replace(/\s+/g, '');
+
+   // Se já existe uma requisição em andamento, não faça outra
+  if (requisicaoEmAndamento) {
+    console.log(`Já há uma requisição em andamento para a cidade ${cidade}.`);
+    return;
+  }
+
+  // Marca que uma requisição está em andamento
+  requisicaoEmAndamento = true;
+
+  // Limpa a lista de itens antes de fazer a requisição para garantir dados frescos
+  const itemList = document.querySelector('#itemList');
+  itemList.innerHTML = ''; // Limpa a lista existente
+
   fetch(`https://farmasearch-adm.onrender.com/dados/${cidadeFormatada}`) // Ajuste a URL conforme necessário
     .then(response => {
       if (!response.ok) {
@@ -270,6 +286,9 @@ function updateItemList(cidade) {
                   document.querySelector('.close-modal').style.display = 'none';
                   document.querySelector('.btnConfirmarModal').innerText = 'Fechar';
                   document.querySelector('.btnConfirmarModal').addEventListener('click', closeModal);
+                  let cidade3 = document.querySelector('#searchInput').value.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, '');
+
+                  updateItemList(cidade3)
                   // alert('Remédio editado com sucesso!')
               })
               .catch(error => {
@@ -279,8 +298,8 @@ function updateItemList(cidade) {
                 document.querySelector('.pModalErro').innerHTML = 'Ocorreu um <span class="spanModalErro">ERRO</span>, revise as informações e tente novamente!'
                 document.querySelector('.btnConfirmarModalErro').addEventListener('click', () => {
                   document.querySelector('#myModalErro').style.display = 'none'
-                });
-                // alert('Não foi possivel editar o remédio, verifique as informações e tente novamente!')
+                })     
+               // alert('Não foi possivel editar o remédio, verifique as informações e tente novamente!')
                 divSalvar.style.display = 'block'
               });
             // Quando clicar no svg "svgSalvar" fazer o UPDATE com o WHERE = ${item.id ou li.id eu acho} dos novos dados que seriam "nome_remedio", "Disponibilidade", "data_pedido" e "data_previsao"
@@ -331,9 +350,11 @@ function updateItemList(cidade) {
               .then(result => {
                 console.log('Item deletado com sucesso:', result);
                 li.style.display = 'none'
-                updateItemList(cidadeFormatada)
+                const itemList = document.querySelector('#itemList');
+                requisicaoEmAndamento = false;
+                updateItemList(cidadeFormatada);
                 let searchInput2 = document.querySelector('#searchInput2');
-                searchInput2.value = ''
+                searchInput2.value = '';
 
                 
                 // alert('Remédio deletado com sucesso!')
@@ -345,7 +366,7 @@ function updateItemList(cidade) {
                   document.querySelector('#myModalErro').style.display = 'none'
                 })
                 // alert('Não foi possivel deletar o remédio, tente novamente!')
-              }); 
+              })
 
             document.getElementById('myModal').style.display = 'none';
         };
@@ -372,12 +393,7 @@ function updateItemList(cidade) {
                 modal.style.display = 'none';
             }
         }
-        // if(userConfirmed) {
-          
-        // };
 
-        
-        
       })
       });
 
@@ -411,9 +427,11 @@ function updateItemList(cidade) {
         });
       });
     })
-    .catch(error => console.error('Erro:', error));
-
-
+    .catch(error => console.error('Erro:', error))
+    .finally(() => {
+      // Ao terminar a requisição (seja sucesso ou erro), libera o controle para novas requisições
+      requisicaoEmAndamento = false;
+    })
 }
 
 
@@ -526,7 +544,6 @@ document.getElementById('searchInput').addEventListener('keyup', function() {
            data_pedido: dataPedido,
            data_previsao: dataPrevisao
          };
-
          fetch('https://farmasearch-adm.onrender.com/dados', {
                method: 'POST',
                headers: {
@@ -542,8 +559,10 @@ document.getElementById('searchInput').addEventListener('keyup', function() {
                })
                .then(result => {
                  console.log('Dados enviados com sucesso:', result);
+                 const itemList = document.querySelector('#itemList');
+                 itemList.innerHTML = '';
                  updateItemList(cidade2)
-		 const valorInput3 = document.querySelector('.searchInput3').value
+                 const valorInput3 = document.querySelector('.searchInput3').value
                  const mostrar = document.querySelector('#h2DivMainAdicionar')
                  mostrar.innerText = valorInput3
                  document.querySelector('#searchInput').value = valorInput3
@@ -562,11 +581,10 @@ document.getElementById('searchInput').addEventListener('keyup', function() {
                  document.querySelector('#myModalErro').style.display = 'flex'
                  document.querySelector('.btnConfirmarModalErro').addEventListener('click', () => {
                   document.querySelector('#myModalErro').style.display = 'none'
-                });
-                //  alert('Não foi possivel cadastrar o remédio, verifique as informações e tente novamente! (Possivelmente ele ja está cadastrado!)')
+                })
                });        
       });
-      
+      itemList.innerHTML = '';
       updateItemList(cidade)
       document.getElementById('searchInput').value = textNormal;
 
@@ -683,6 +701,18 @@ document.querySelector('.btnConfirmar').addEventListener('click', (event) => {
         document.getElementById('myModal').style.display = 'flex';
   };
 
+  if (requisicaoEmAndamento) {
+    console.log(`Já há uma requisição em andamento para a cidade ${cidade}.`);
+    return;
+  }
+
+  // Marca que uma requisição está em andamento
+  requisicaoEmAndamento = true;
+
+  // Limpa a lista de itens antes de fazer a requisição para garantir dados frescos
+  const itemList = document.querySelector('#itemList');
+  itemList.innerHTML = ''; // Limpa a lista existente
+
   fetch('https://farmasearch-adm.onrender.com/dados', {
     method: 'POST',
     headers: {
@@ -714,5 +744,5 @@ document.querySelector('.btnConfirmar').addEventListener('click', (event) => {
        document.querySelector('#myModalErro').style.display = 'none'
      })
      //  alert('Não foi possivel cadastrar o remédio, verifique as informações e tente novamente! (Possivelmente ele ja está cadastrado!)')
-    });
+    })
 });
