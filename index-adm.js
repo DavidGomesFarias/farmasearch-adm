@@ -289,7 +289,7 @@ function updateItemList(cidade) {
 		   let cidade3 = document.querySelector('#searchInput').value.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, '');
 		   closeModal()
 		   updateItemList(cidade3)  
-		  );			
+		  });			
                   
 
                   
