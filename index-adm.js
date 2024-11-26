@@ -23,7 +23,7 @@ function updateItemList(cidade) {
   const itemList = document.querySelector('#itemList');
   itemList.innerHTML = ''; // Limpa a lista existente
 
-  fetch(`https://farmasearch-adm.onrender.com/dados/${cidadeFormatada}`) // Ajuste a URL conforme necessário
+  fetch(`http://localhost:3001/dados/${cidadeFormatada}`) // Ajuste a URL conforme necessário
     .then(response => {
       if (!response.ok) {
         throw new Error(`Erro na requisição: ${response.statusText}`);
@@ -230,7 +230,7 @@ function updateItemList(cidade) {
               nova_data_previsao: novaDataPrevisao
             }
 
-            fetch(`https://farmasearch-adm.onrender.com/dados/${itemId}`, {
+            fetch(`http://localhost:3001/dados/${itemId}`, {
               method: 'PUT',
               headers: {
                 'Content-Type': 'application/json',
@@ -286,11 +286,10 @@ function updateItemList(cidade) {
                   document.querySelector('.close-modal').style.display = 'none';
                   document.querySelector('.btnConfirmarModal').innerText = 'Fechar';
                   document.querySelector('.btnConfirmarModal').addEventListener('click', () => {
-		   let cidade3 = document.querySelector('#searchInput').value.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, '');
-		   closeModal()
-		   updateItemList(cidade3)  
-		  });			
-                  
+                    let cidade3 = document.querySelector('#searchInput').value.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, '');
+                    closeModal()
+                    updateItemList(cidade3)
+                  });
 
                   
                   // alert('Remédio editado com sucesso!')
@@ -339,7 +338,7 @@ function updateItemList(cidade) {
 
         function apagarRemedio() {
             const cidadeFormatada = cidade3.replace(/\s+/g, '');
-            fetch(`https://farmasearch-adm.onrender.com/dados/${cidadeFormatada}/${itemDeleteId}`, {
+            fetch(`http://localhost:3001/dados/${cidadeFormatada}/${itemDeleteId}`, {
               method: 'DELETE',
               headers: {
                 'Content-Type': 'application/json',
@@ -355,7 +354,7 @@ function updateItemList(cidade) {
                 console.log('Item deletado com sucesso:', result);
                 li.style.display = 'none'
                 const itemList = document.querySelector('#itemList');
-                requisicaoEmAndamento = false;
+                
                 updateItemList(cidadeFormatada);
                 let searchInput2 = document.querySelector('#searchInput2');
                 searchInput2.value = '';
@@ -370,6 +369,9 @@ function updateItemList(cidade) {
                   document.querySelector('#myModalErro').style.display = 'none'
                 })
                 // alert('Não foi possivel deletar o remédio, tente novamente!')
+              })
+              .finally(() => {
+                requisicaoEmAndamento = false;
               })
 
             document.getElementById('myModal').style.display = 'none';
@@ -548,7 +550,7 @@ document.getElementById('searchInput').addEventListener('keyup', function() {
            data_pedido: dataPedido,
            data_previsao: dataPrevisao
          };
-         fetch('https://farmasearch-adm.onrender.com/dados', {
+         fetch('http://localhost:3001/dados', {
                method: 'POST',
                headers: {
                  'Content-Type': 'application/json',
@@ -705,19 +707,11 @@ document.querySelector('.btnConfirmar').addEventListener('click', (event) => {
         document.getElementById('myModal').style.display = 'flex';
   };
 
-  if (requisicaoEmAndamento) {
-    console.log(`Já há uma requisição em andamento para a cidade ${cidade}.`);
-    return;
-  }
-
-  // Marca que uma requisição está em andamento
-  requisicaoEmAndamento = true;
-
   // Limpa a lista de itens antes de fazer a requisição para garantir dados frescos
   const itemList = document.querySelector('#itemList');
   itemList.innerHTML = ''; // Limpa a lista existente
 
-  fetch('https://farmasearch-adm.onrender.com/dados', {
+  fetch('http://localhost:3001/dados', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
